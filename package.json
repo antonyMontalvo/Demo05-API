@@ -1,0 +1,27 @@
+{
+  "name": "Demo02-Api01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-validator": "^5.3.1",
+    "morgan": "^1.9.1",
+    "mysql2": "^1.6.5",
+    "request": "^2.88.0",
+    "sequelize": "^5.7.6",
+    "uid": "0.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
+  }
+}
