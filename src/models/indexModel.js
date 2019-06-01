@@ -17,6 +17,31 @@ IndexModel.getRoomsData = () => {
     });
 }
 
+IndexModel.insertReservationData = data => {
+    return new Promise((resolve, reject) => {
+
+        db.sequelize.query('CALL sp_insert_reservation(?,?,?,?,?,?,?,?)',
+            {
+                raw: true,
+                replacements: [
+                    data.initDate,
+                    data.email,
+                    data.name,
+                    data.lastname,
+                    data.dni,
+                    data.numCard,
+                    data.cvv,
+                    data.idHab
+                ]
+            })
+            .then((result) => {
+                resolve(result)
+            }).catch((err) => {
+                reject(err)
+            });
+    });
+}
+
 // App
 IndexModel.getReservationData = () => {
     return new Promise((resolve, reject) => {

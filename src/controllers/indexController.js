@@ -1,5 +1,4 @@
-const request = require('request'),
-    uid = require('uid'),
+const uid = require('uid'),
     { validationResult } = require("express-validator/check");
 
 const IndexController = {},
@@ -26,22 +25,27 @@ IndexController.getRooms = (req, res) => {
 
 IndexController.insertReservation = (req, res) => {
     let data = {
+        initDate: req.body.initDate,
+        email: req.body.email,
         name: req.body.name,
         lastname: req.body.lastname,
         dni: req.body.dni,
-        email: req.body.email,
-        phone: req.body.phone,
-        interest: req.body.interest,
-        date: req.body.date,
+        numCard: req.body.numCard,
+        cvv: req.body.cvv,
+        idHab: req.body.idHab,        
     }, errors = validationResult(req);
 
     return !errors.isEmpty()
         ? res.status(422).json({ errors: errors.array() })
-        : Index.insertPerson(data)
+        : Index.insertReservationData(data)
             .then((result) => {
-                return result.length > 0
-                    ? res.status(201).json({ message: 'usuario registrado con exito' })
-                    : res.status(202).json({ message: 'ocurrio un error intentelo de nuevo' });
+                return result[0].response == 1
+                    ? res.status(201).json({
+                        message: 'Reserva realizada correctamente'
+                    })
+                    : res.status(202).json({
+                        message: 'Error al realizar reserva vuelva a intentarlo'
+                    });
             }).catch((err) => {
                 return res.status(500).json({ errors: err.stack });
             });
