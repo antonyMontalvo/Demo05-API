@@ -1,6 +1,6 @@
 module.exports = {
     db: {
-        host: 'tecsolutions.me',
+        host: '127.0.0.1',
         port: '3306',
         database: 'Demo05-DB',
         user: 'antony',
