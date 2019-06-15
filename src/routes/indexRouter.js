@@ -6,7 +6,7 @@ const IndexController = require("../controllers/indexController");
 
 // web
 router
-    .get("/rooms", IndexController.getRooms)
+    //.get("/rooms", IndexController.getRooms)
     .post("/reservation",[
         check('initDate').exists().isISO8601(),
         check('email').exists().isEmail(),
